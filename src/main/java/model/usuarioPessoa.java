@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,11 +13,21 @@ public class usuarioPessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)//vai gerar a sequencia para todos os registros
 	private Long id;
 	
+	@Column(name = "nome")
 	private String nome;
 	private String sobrenome;
 	private String email;
 	private String login;
+	private int idade;
 	
+	
+	
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 	public Long getId() {
 		return id;
 	}
