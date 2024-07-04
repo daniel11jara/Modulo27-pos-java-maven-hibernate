@@ -32,5 +32,18 @@ public class TesteHibernate {
 		System.out.println(pessoa);
 		
 	}
+	
+	@Test
+	public void testeUpdate() {
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		usuarioPessoa pessoa = daoGeneric.pesquisar(1L, usuarioPessoa.class);
+		
+		pessoa.setIdade(99);
+		pessoa.setNome("Nome atualizado Hibernate");
+		
+		pessoa = daoGeneric.updateMerge(pessoa);
+		
+		System.out.println(pessoa);
+	}
 
 }
