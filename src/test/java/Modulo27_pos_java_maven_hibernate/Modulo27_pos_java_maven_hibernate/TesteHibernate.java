@@ -20,5 +20,17 @@ public class TesteHibernate {
 		
 		daoGeneric.salvar(pessoa);
 	}
+	
+	@Test
+	public void testeBuscar() {
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		usuarioPessoa pessoa = new usuarioPessoa();
+		pessoa.setId(1L);
+		
+		pessoa  = daoGeneric.pesquisar(pessoa);
+		
+		System.out.println(pessoa);
+		
+	}
 
 }
