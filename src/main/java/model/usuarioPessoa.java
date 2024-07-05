@@ -12,8 +12,6 @@ public class usuarioPessoa {
 	@Id//gera o primary key
 	@GeneratedValue(strategy = GenerationType.AUTO)//vai gerar a sequencia para todos os registros
 	private Long id;
-	
-	
 	private String nome;
 	private String sobrenome;
 	private String email;
