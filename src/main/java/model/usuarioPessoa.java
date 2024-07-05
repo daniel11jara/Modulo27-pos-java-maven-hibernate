@@ -13,7 +13,7 @@ public class usuarioPessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)//vai gerar a sequencia para todos os registros
 	private Long id;
 	
-	@Column(name = "nome")
+	
 	private String nome;
 	private String sobrenome;
 	private String email;
