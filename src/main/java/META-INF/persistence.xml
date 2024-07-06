@@ -4,6 +4,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	<persistence-unit name="Modulo27-pos-java-maven-hibernate">
 	
 	<class>model.usuarioPessoa</class>
+	<class>model.TelefoneUser</class>
 	
 	<properties>
 	<!-- dados de conexão -->

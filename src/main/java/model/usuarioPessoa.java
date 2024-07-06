@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity//vai gerar a tabela no banco de dados
 @NamedQueries({//aula 27.19
@@ -25,8 +28,18 @@ public class usuarioPessoa {
 	private String login;
 	private int idade;
 	
+	//um para muitos - um usuario tem muitos telefones
+	@OneToMany(mappedBy = "usuarioPessoa")
+	private List<TelefoneUser> TelefoneUsers;//aula 27.19
 	
 	
+	
+	public List<TelefoneUser> getTelefoneUsers() {
+		return TelefoneUsers;
+	}
+	public void setTelefoneUsers(List<TelefoneUser> telefoneUsers) {
+		TelefoneUsers = telefoneUsers;
+	}
 	public int getIdade() {
 		return idade;
 	}
