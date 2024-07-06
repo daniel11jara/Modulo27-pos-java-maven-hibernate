@@ -114,5 +114,29 @@ public class TesteHibernate {
 		
 		System.out.println(somaIdade);
 	}
+	
+	@Test
+	public void testeNameQuery1() {//aula 27.19 - listando todos
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		List<usuarioPessoa> list = daoGeneric.getEntityManager().createNamedQuery("usuarioPessoa.todos").getResultList();
+		
+		for (usuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+		
+	}
+	
+	@Test
+	public void testeNameQuery2() {//aula 27.19 - buscando por nome
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		List<usuarioPessoa> list = daoGeneric.getEntityManager().createNamedQuery("usuarioPessoa.buscarPorNome").setParameter("nome", "van").getResultList();
+		
+		for (usuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+		
+	}
 
 }

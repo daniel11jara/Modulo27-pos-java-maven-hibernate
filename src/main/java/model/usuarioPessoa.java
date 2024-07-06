@@ -5,8 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity//vai gerar a tabela no banco de dados
+@NamedQueries({//aula 27.19
+	
+	@NamedQuery(name = "usuarioPessoa.todos", query = "select u from usuarioPessoa u"),
+	@NamedQuery(name = "usuarioPessoa.buscarPorNome", query = "select u from usuarioPessoa u where u.nome = :nome")
+})
 public class usuarioPessoa {
 	
 	@Id//gera o primary key
