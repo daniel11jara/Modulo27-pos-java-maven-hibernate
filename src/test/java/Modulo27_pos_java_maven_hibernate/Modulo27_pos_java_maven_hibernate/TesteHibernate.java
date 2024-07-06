@@ -33,6 +33,7 @@ public class TesteHibernate {
 		
 		System.out.println(pessoa);
 		
+		
 	}
 	
 	@Test
@@ -81,6 +82,37 @@ public class TesteHibernate {
 		for (usuarioPessoa usuarioPessoa : list) {
 			System.out.println(usuarioPessoa);
 		}
+	}
+	
+	@Test
+	public void testeQueryListMaxResult() {//aula 27.16 - ordenando quantidade especifica de resultados - setMaxResul()
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		List<usuarioPessoa> list = daoGeneric.getEntityManager().createQuery(" from usuarioPessoa order by id").setMaxResults(2).getResultList();//carregando apenas um nome da lista
+		
+		for (usuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+	}
+	
+	@Test
+	public void testeQueryListParameter() {//aula 27.17 - trazendo um nome através de parâmetros - colocando um nome ou sobrenome
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		List<usuarioPessoa> list = daoGeneric.getEntityManager().createQuery(" from usuarioPessoa where nome or sobrenome = : sobrenome").setParameter("nome", "bill").setParameter("sobrenome", "Gates").getResultList();
+		
+		for (usuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+	}
+	
+	@Test
+	public void testeQuerySomarIdade() {//aula 27.18
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		Long somaIdade = (Long) daoGeneric.getEntityManager().createQuery("select sum(u.idade) from usuarioPessoa u").getSingleResult();//somando todas as idades
+		
+		System.out.println(somaIdade);
 	}
 
 }
