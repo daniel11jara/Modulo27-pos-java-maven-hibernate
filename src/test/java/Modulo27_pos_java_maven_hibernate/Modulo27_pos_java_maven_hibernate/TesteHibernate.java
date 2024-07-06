@@ -1,5 +1,7 @@
 package Modulo27_pos_java_maven_hibernate.Modulo27_pos_java_maven_hibernate;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import dao.DaoGeneric;
@@ -54,6 +56,19 @@ public class TesteHibernate {
 		usuarioPessoa pessoa = daoGeneric.pesquisar(2L, usuarioPessoa.class);
 		
 		daoGeneric.deletarPorId(pessoa);
+		
+	}
+	
+	@Test
+	public void testeConsultar() {//aula 27.14
+		DaoGeneric<usuarioPessoa> daoGeneric = new DaoGeneric<usuarioPessoa>();
+		
+		List<usuarioPessoa> list = daoGeneric.listar(usuarioPessoa.class);
+		
+		for (usuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+			System.out.println("------------------------------------------------------------");
+		}
 		
 	}
 
